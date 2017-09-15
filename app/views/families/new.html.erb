@@ -1,0 +1,29 @@
+<h1>New Family Form</h1>
+
+<% if @family.errors %>
+  <div class="errors">
+    <%= @family.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<%= form_for @family, url: "/families" do |f| %>
+  <formfield>
+    <%= f.label :surname %>
+    <%= f.text_field :surname %>
+  </formfield>
+  <formfield>
+    <%= f.label :matriarch %>
+    <%= f.text_field :matriarch %>
+    <%= f.label :patriarch %>
+    <%= f.text_field :patriarch %>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+    <%= f.label :anniversary %>
+    <%= f.text_field :anniversary %>
+  </formfield>
+  <formfield>
+    <%= f.submit "Add Family" %>
+  </formfield>
+<% end %>

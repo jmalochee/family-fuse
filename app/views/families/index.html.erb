@@ -1,0 +1,8 @@
+<h1>Families</h1>
+<%= link_to "Add New Family", new_restaurant_path %>
+<br/><br/>
+<% @families.each do |r| %>
+  <div>
+    <%= link_to r.surname, family_path(r) %>
+  </div>
+<% end %>
