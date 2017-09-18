@@ -4,6 +4,8 @@ class Family < ApplicationRecord
   validates :patriarch, presence: true
   validates :state, presence: true
   
+  has_and_belongs_to_many :members, through: :families_members
+  
   NULL_ATTRS = [:city, :anniversary]
   before_save :nil_if_blank
   

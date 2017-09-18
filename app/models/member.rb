@@ -2,6 +2,8 @@ class Member < ApplicationRecord
   validates :first_name, null: false
   validates :last_name, null: false
   
+  has_and_belongs_to_many :families, through: :families_members
+  
   NULL_ATTRS = [:mid_name, :aka, :birthdate]
   before_save :nil_if_blank
   
