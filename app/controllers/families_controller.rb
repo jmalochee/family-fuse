@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
   def index
-    @families = Families.all
+    @families = Family.all
   end
 
   def new
@@ -9,13 +9,12 @@ class FamiliesController < ApplicationController
 
   def create
     @family = Family.new(family_params)
-    binding.pry
 
     if @family.save
       flash[:notice] = "Family added successfully"
       redirect_to family_path(@family)
     elsif
-      flash[:alert] = "no dice, try again."
+      flash[:alert] = "family could not be created"
       render :new
     end
   end
