@@ -5,7 +5,7 @@ class CreateFamilies < ActiveRecord::Migration[5.0]
       t.string :matriarch, null: false
       t.string :patriarch, null: false
       t.string :state, null: false
-      t.string :city, null: false
+      t.string :city
       t.date :anniversary
     end
   end
