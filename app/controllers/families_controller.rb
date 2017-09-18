@@ -1,5 +1,4 @@
 class FamiliesController < ApplicationController
-
   def index
     @families = Families.all
   end
@@ -10,6 +9,7 @@ class FamiliesController < ApplicationController
 
   def create
     @family = Family.new(family_params)
+    binding.pry
 
     if @family.save
       flash[:notice] = "Family added successfully"

@@ -1,6 +1,6 @@
-<h1> <%= @family.name %> </h1>
+<h1> <%= @family.surname %> </h1>
 <h4>Information</h4>
 <p>
-  This family was started by <%= @family.patriarch %> and <%= @family.matriarch %> 
-  on <%= @family.anniversaty %> in <%= @family.city %>, <%= @family.state %><br/>
+  This <%= "#{@family.city}, " if !!@family.city %><%= @family.state %> family was started by 
+  <%= @family.patriarch %> and <%= @family.matriarch %><%= " on #{@family.anniversary}" if !!@family.anniversary %>.<br/>
   <br/>
