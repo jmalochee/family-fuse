@@ -1,0 +1,25 @@
+<h1>New Family Member Form</h1>
+
+<% if @member.errors %>
+  <div class="errors">
+    <%= @member.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<%= form_for @member, url: "/members" do |f| %>
+  <formfield>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <%= f.label :mid_name %>
+    <%= f.text_field :mid_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <%= f.label :aka %>
+    <%= f.text_field :aka %>
+    <%= f.label :birthdate %>
+    <%= f.date_field :birthdate %>
+  </formfield>
+  <formfield>
+    <%= f.submit "Add Family Member" %>
+  </formfield>
+<% end %>

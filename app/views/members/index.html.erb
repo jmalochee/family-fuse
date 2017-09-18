@@ -1,0 +1,8 @@
+<h1>Members</h1>
+<%= link_to "Add New Family Member", new_member_path %>
+<br/><br/>
+<% @members.each do |mem| %>
+  <div>
+    <%= link_to "#{mem.first_name} #{mem.last_name}", member_path(mem) %>
+  </div>
+<% end %>
