@@ -18,6 +18,8 @@
     <%= f.text_field :aka %>
     <%= f.label :birthdate %>
     <%= f.date_field :birthdate %>
+    <%= f.label :family_ids %>
+    <%= f.collection_select(:family_ids, Family.all, :id, :surname) %>
   </formfield>
   <formfield>
     <%= f.submit "Add Family Member" %>
