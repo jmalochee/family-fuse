@@ -4,6 +4,7 @@ class Member < ApplicationRecord
   validates :family_id, presence: true
   
   has_and_belongs_to_many :families, through: :families_members
+  has_many :emails
   
   NULL_ATTRS = [:mid_name, :aka, :birthdate]
   before_save :nil_if_blank
