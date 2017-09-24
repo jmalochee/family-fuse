@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924213446) do
+ActiveRecord::Schema.define(version: 20170924220031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "emails", force: :cascade do |t|
     t.string  "email",     null: false
+    t.string  "type",      null: false
     t.integer "member_id"
     t.index ["member_id"], name: "index_emails_on_member_id", using: :btree
   end
@@ -43,6 +44,13 @@ ActiveRecord::Schema.define(version: 20170924213446) do
     t.string "mid_name"
     t.string "aka"
     t.date   "birthdate"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string  "phone",     null: false
+    t.string  "type",      null: false
+    t.integer "member_id"
+    t.index ["member_id"], name: "index_phones_on_member_id", using: :btree
   end
 
 end
