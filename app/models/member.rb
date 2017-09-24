@@ -1,6 +1,7 @@
 class Member < ApplicationRecord
   validates :first_name, null: false
   validates :last_name, null: false
+  validates :family_id, null: false
   
   has_and_belongs_to_many :families, through: :families_members
   
