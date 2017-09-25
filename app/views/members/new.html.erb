@@ -8,18 +8,21 @@
 
 <%= form_for @member, url: "/members" do |f| %>
   <formfield>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-    <%= f.label :mid_name %>
-    <%= f.text_field :mid_name %>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-    <%= f.label :aka %>
-    <%= f.text_field :aka %>
-    <%= f.label :birthdate %>
-    <%= f.date_field :birthdate %>
-    <%= f.label :family_ids %>
-    <%= f.collection_select(:family_ids, Family.all, :id, :surname) %>
+    <%= f.label :family_ids %><br/>
+    <%= f.collection_check_boxes :family_ids, Family.all, :id, :surname do |check| %>
+    <%= check.check_box %><%= check.label %><br/>
+    <% end %>
+    <%= link_to "Add a new family", new_family_path %><br/>
+    <%= f.label :first_name %><br/>
+    <%= f.text_field :first_name %><br/>
+    <%= f.label :mid_name %><br/>
+    <%= f.text_field :mid_name %><br/>
+    <%= f.label :last_name %><br/>
+    <%= f.text_field :last_name %><br/>
+    <%= f.label :aka %><br/>
+    <%= f.text_field :aka %><br/>
+    <%= f.label :birthdate %><br/>
+    <%= f.date_field :birthdate %><br/>
   </formfield>
   <formfield>
     <%= f.submit "Add Family Member" %>

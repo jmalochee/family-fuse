@@ -1,6 +1,14 @@
 <h1> <%= @member.full_name %> </h1>
 <h4>Information</h4>
 <p>
-  Birthday: <%= @member.birthdate %>
+  Birthday: <%= @member.birthdate %><br/>
   Nickname: <%= @member.aka %>
-  
+</p>
+<div>
+  Family member of
+  <ul>
+    <% @member.families.each do |family| %>
+      <li><%= link_to family.surname, family %></li>
+    <% end %>
+  </ul>
+</div>
