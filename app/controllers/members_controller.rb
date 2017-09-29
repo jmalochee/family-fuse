@@ -5,10 +5,15 @@ class MembersController < ApplicationController
 
   def new
     @member = Member.new
+    @member.emails.build
+    @member.phones.build
+
   end
 
   def create
     @member = Member.new(member_params)
+    # @email = Email.new(member_params)
+    # @member.emails << @email
 
     if @member.save
       flash[:notice] = "Member added successfully"
@@ -24,8 +29,12 @@ class MembersController < ApplicationController
   end
 
   private
-  
+
   def member_params
-    params.require(:member).permit(:first_name, :last_name, :mid_name, :aka, :birthdate, family_ids: [])
+    params.require(:member).permit(:first_name, :last_name, :mid_name, :aka, :birthdate, family_ids: [],
+      emails_attributes: [:email, :kind],
+      phones_attributes: [:number, :kind],
+      addresses_attributes: [:line1, :line2, :city, :state, :zip, :kind]
+      )
   end
 end

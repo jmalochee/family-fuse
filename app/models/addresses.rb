@@ -3,6 +3,7 @@ class Address < ApplicationRecord
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
-  validates :type, presence: true
-  belongs_to :member
+  validates :kind, presence: true
+  belongs_to :member, inverse_of: :address
+  validates_presence_of :member
 end
