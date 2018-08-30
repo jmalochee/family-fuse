@@ -59,6 +59,9 @@ GEM
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
     ffi (1.9.14)
+    genealogy (2.5.1)
+      activerecord (> 4.0)
+      activesupport (> 4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -186,6 +189,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   factory_girl_rails
+  genealogy
   jquery-rails
   launchy
   listen
@@ -200,4 +204,4 @@ DEPENDENCIES
   valid_attribute
 
 BUNDLED WITH
-   1.12.5
+   1.16.3

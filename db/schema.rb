@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929152037) do
+ActiveRecord::Schema.define(version: 20170924220836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,22 +31,6 @@ ActiveRecord::Schema.define(version: 20170929152037) do
     t.string  "kind",      null: false
     t.integer "member_id"
     t.index ["member_id"], name: "index_emails_on_member_id", using: :btree
-  end
-
-  create_table "families", force: :cascade do |t|
-    t.string "surname",     null: false
-    t.string "matriarch",   null: false
-    t.string "patriarch",   null: false
-    t.string "state",       null: false
-    t.string "city"
-    t.date   "anniversary"
-  end
-
-  create_table "families_members", id: false, force: :cascade do |t|
-    t.integer "family_id", null: false
-    t.integer "member_id", null: false
-    t.index ["family_id"], name: "index_families_members_on_family_id", using: :btree
-    t.index ["member_id"], name: "index_families_members_on_member_id", using: :btree
   end
 
   create_table "members", force: :cascade do |t|
