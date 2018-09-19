@@ -1,16 +1,26 @@
 class Member < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :family_ids, presence: true
+  # validates :birth_date, presence: true
 
-  has_and_belongs_to_many :families, through: :families_members
   has_many :emails, dependent: :destroy, inverse_of: :member
   has_many :phones, dependent: :destroy, inverse_of: :member
   has_many :addresses, dependent: :destroy, inverse_of: :member
 
   accepts_nested_attributes_for :emails, :phones, :addresses, allow_destroy: true
 
-  NULL_ATTRS = [:mid_name, :aka, :birthdate]
+  has_parents(options = {current_spouse: true})
+
+  NULL_ATTRS = [
+    :mid_name, 
+    :aka, 
+    :birth_date, 
+    :mother_id, 
+    :father_id, 
+    :death_date, 
+    :current_spouse_id
+  ]
+
   before_save :nil_if_blank
 
   def full_name
