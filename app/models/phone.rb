@@ -1,5 +1,6 @@
 class Phone < ApplicationRecord
   validates :phone, presence: true
-  validates :type, presence: true
-  belongs_to :member
+  validates :kind, presence: true
+  belongs_to :member, inverse_of: :phone
+  validates_presence_of :member
 end

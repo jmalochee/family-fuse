@@ -24,5 +24,6 @@
 /node_modules/*
 /app/assets/javascripts/bundle.js
 .DS_Store
-/notes
+/local_notes/*
 .env
+/db/seeds.rb

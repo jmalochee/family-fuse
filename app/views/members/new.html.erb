@@ -21,8 +21,25 @@
     <%= f.text_field :last_name %><br/>
     <%= f.label :aka %><br/>
     <%= f.text_field :aka %><br/>
-    <%= f.label :birthdate %><br/>
-    <%= f.date_field :birthdate %><br/>
+    <%= f.label :birth_date %><br/>
+    <%= f.date_field :birth_date %><br/>
+    Emails:
+    <ul>
+      <%= f.fields_for :emails do |email_f| %>
+        <li>
+          <% email_f.label :email %>
+          <%= email_f.text_field :email %>
+
+          <%= email_f.label :kind %>
+          <% email_kinds = ["Personal", "Work", "Primary"] %>
+          <%= email_f.select(:kind) do %>
+            <% email_kinds.each do |i|  %>
+              <%= content_tag(:option, i, value: i) %>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </formfield>
   <formfield>
     <%= f.submit "Add Family Member" %>
