@@ -14,3 +14,8 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+# Setting pluralization for "nucleus"
+ActiveSupport::Inflector.inflections do |inflect|
+	inflect.irregular 'nucleus', 'nuclei'
+end

@@ -1,14 +1,12 @@
-<h1> <%= @family.surname %> </h1>
-<h4>Information</h4>
-<div>
-  This <%= "#{@family.city}, " if !!@family.city %><%= @family.state %> family was started by 
-  <%= @family.patriarch %> and <%= @family.matriarch %><%= " on #{@family.anniversary}" if !!@family.anniversary %>.<br/>
-</div>
+<h1>The <%= @family.surname %> Family</h1>
+<%= @family.patriarch %> and <%= @family.matriarch %> of <%= "#{@family.city}, " if !!@family.city %><%= @family.state %><br/>
+<%= " Anniversary: #{@family.anniversary}" if !!@family.anniversary %><br/>
+
 <div class="family-members">
+<h4>Family Members</h4>
   <ul>
     <% @family.members.each do |member| %>
       <li> <%= link_to member.full_name, member %> </li>
     <% end %>
   </ul>
-  
 </div>
