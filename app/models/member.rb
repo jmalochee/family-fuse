@@ -3,8 +3,7 @@ class Member < ApplicationRecord
   validates :last_name, presence: true
   # validates :birth_date, presence: true
 
-  has_many :emails, dependent: :destroy, inverse_of: :member
-  has_many :phones, dependent: :destroy, inverse_of: :member
+  has_many :contacts, dependent: :destroy, inverse_of: :member
   has_many :addresses, dependent: :destroy, inverse_of: :member
 
   accepts_nested_attributes_for :emails, :phones, :addresses, allow_destroy: true
