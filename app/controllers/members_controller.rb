@@ -5,8 +5,7 @@ class MembersController < ApplicationController
 
   def new
     @member = Member.new
-    @member.emails.build
-    @member.phones.build
+    @member.contacts.build
 
   end
 
@@ -31,9 +30,8 @@ class MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:first_name, :last_name, :mid_name, :aka, :birth_date, family_ids: [],
-      emails_attributes: [:email, :kind],
-      phones_attributes: [:number, :kind],
+    params.require(:member).permit(:first_name, :last_name, :mid_name, :aka, :birth_date,
+      contacts_attributes: [:point, :kind, :name, :preferred],
       addresses_attributes: [:line1, :line2, :city, :state, :zip, :kind]
       )
   end
