@@ -6,7 +6,7 @@ class Member < ApplicationRecord
   has_many :contacts, dependent: :destroy, inverse_of: :member
   has_many :addresses, dependent: :destroy, inverse_of: :member
 
-  accepts_nested_attributes_for :emails, :phones, :addresses, allow_destroy: true
+  accepts_nested_attributes_for :contacts, :addresses, allow_destroy: true
 
   has_parents(options = {current_spouse: true})
 
@@ -24,6 +24,15 @@ class Member < ApplicationRecord
 
   def full_name
     "#{first_name} #{mid_name} #{last_name}"
+  end
+
+  def age
+    now = Time.now.utc.to_date
+    years = now.year - self.birth_date.year 
+    bday_before_this_month = now.month > self.birth_date.month
+    bday_this_month = now.month == self.birth_date.month
+    bday_before_today = now.day >= self.birth_date.day
+    years - (( bday_before_this_month || ( bday_this_month && bday_before_today )) ? 0 : 1 )
   end
 
   protected
