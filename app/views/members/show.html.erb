@@ -1,6 +1,15 @@
-<h1> <%= @member.full_name %> </h1>
-<h4>Information</h4>
+<%= render "members/avatar" %>
+<h1> <%= !!@member.aka ? (@member.aka+" "+@member.last_name) : 
+	(@member.first_name+" "+@member.last_name) %> </h1>
 <p>
-  Birthday: <%= @member.birth_date %><br/>
-  Nickname: <%= @member.aka %>
+	Given Name
+	<%= @member.full_name %>
+</p>
+<p>
+	Born On
+	<%= @member.birth_date.strftime("%A, %B #{@member.birth_date.day.ordinalize}, %Y") %><br/>
+</p>
+<p>
+	Parents
+	<%= "#{@member.father.full_name} and #{@member.mother.first_name}" %>
 </p>
