@@ -1,0 +1,15 @@
+@import "settings";
+@import "font-awesome";
+
+.avatar {
+	border-radius: 50%;
+	font-family: 'arial', sans-serif;
+	font-size: 30vmin;
+	font-weight: lighter;
+	text-align: center;
+	color: white;
+	line-height: 50vmin;
+	width: 50vmin;
+	height: 50vmin;
+	display: table;
+}
