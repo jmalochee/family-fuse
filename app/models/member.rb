@@ -22,8 +22,12 @@ class Member < ApplicationRecord
 
   before_save :nil_if_blank
 
+  def goes_by
+    !!aka ? aka : first_name
+  end
+
   def initials
-    !!aka ? (aka[0] + last_name[0]) : (first_name[0] + last_name[0])
+    goes_by[0] + ( !!mid_name ? mid_name[0] : "" ) + last_name[0]
   end
 
   def full_name
@@ -39,18 +43,27 @@ class Member < ApplicationRecord
     years - (( bday_before_this_month || ( bday_this_month && bday_before_today )) ? 0 : 1 )
   end
 
+  # initial method produces an rgb value from each initial, using the mean value when a middle name is absent
+  # def color
+  #   def char_to_num(letter)
+  #     "a".upto("z").to_a.index(letter)
+  #   end
+  #   mid_average = ((char_to_num(initials[0]) - char_to_num(initials[1])).abs/2 + char_to_num(initials[0]))
+  #   mid_average = "a".upto("z").to_a[mid_average]
+  #   mid = !!mid_name ? mid_name[0] : mid_average
+  #   color = []
+  #   initials.insert(1, mid).each_char { i color << (char_to_num(i) * 10) }
+  #   color.to_s[1..-2]
+  # end
+
+  # this method produces a numeric sum based on the initials and scales to a hue hsl value
   def color
     def char_to_num(letter)
       "a".upto("z").to_a.index(letter)
     end
-    mid_average = ((char_to_num(initials[0]) - char_to_num(initials[1])).abs/2 + char_to_num(initials[0]))
-    mid_average = "a".upto("z").to_a[mid_average]
-    mid = !!mid_name ? mid_name[0] : mid_average
-    color = []
-    initials.insert(1, mid).each_char do |i|
-      color << (char_to_num(i) * 10)
-    end
-    color.to_s[1..-2]
+    hue = 0
+    initials.each_char { i hue += char_to_num(i) }
+    ((hue / (initials.length * 25.0)) * 360).floor
   end
 
   protected
