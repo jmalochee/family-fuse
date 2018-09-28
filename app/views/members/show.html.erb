@@ -1,15 +1,27 @@
-<%= render "members/avatar" %>
-<h1> <%= !!@member.aka ? (@member.aka+" "+@member.last_name) : 
-	(@member.first_name+" "+@member.last_name) %> </h1>
-<p>
-	Given Name
-	<%= @member.full_name %>
-</p>
-<p>
-	Born On
-	<%= @member.birth_date.strftime("%A, %B #{@member.birth_date.day.ordinalize}, %Y") %><br/>
-</p>
-<p>
-	Parents
-	<!-- <%= "#{@member.father.full_name} and #{@member.mother.first_name}" %> -->
-</p>
+<div class="member" > 
+	<div class="member-show">
+		<%= render partial: "members/avatar", object: @member, as: 'member' %>
+	<h1> <%= @member.goes_by+" "+@member.last_name %> </h1>
+	<p>
+		Given Name <br/>
+		<%= @member.full_name %>
+	</p>
+	<p>
+		Born On <br/>
+		<%= @member.birth_date.strftime("%A, %B #{@member.birth_date.day.ordinalize}, %Y") %><br/>
+	</p>
+	<p>
+		Parents <br/>
+		<% if !!@member.mother && !!@member.father %>
+			<%= "#{@member.father.first_name} and #{@member.mother.first_name}" %>
+		<% end %>
+	</p>
+	</div>
+	<div class="overview">
+		<% if !!@member.mother && !!@member.father %>
+			<%= render partial: "generation", object: @member.parents, as: 'members' %>
+		<% end %>
+		<%= render partial: "generation", object: (@member.siblings + [@member]), as: 'members' %>
+		
+	</div>
+</div>
