@@ -1,0 +1,21 @@
+.member {
+	display: flex;
+	flex-direction: row;
+}
+
+.member-show {
+	width: 15em;
+	background: yellow;
+	padding-left: auto;
+	padding-right: auto;
+} 
+
+.member-show .avatar {
+	font-size: 7.5em;
+}
+
+.overview {
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -1,3 +1,8 @@
-<div class="avatar <%= @member.initials %>" style="background: hsl(<%= @member.color %>, 70%, 50%);" >
-	<%= @member.initials[0, -1].upcase %>
+<div class="avatar <%= member.initials %>" >
+	<style>
+		.avatar:after { background: hsl(<%= member.color %>, 70%, 50%); }
+	</style>
+	<div>
+		<%= (member.initials[0] + member.initials[-1]) %>
+	</div>
 </div>

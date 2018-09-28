@@ -27,7 +27,7 @@ class Member < ApplicationRecord
   end
 
   def initials
-    goes_by[0] + ( !!mid_name ? mid_name[0] : "" ) + last_name[0]
+    (goes_by[0] + ( !!mid_name ? mid_name[0] : "" ) + last_name[0]).upcase
   end
 
   def full_name
@@ -59,10 +59,10 @@ class Member < ApplicationRecord
   # this method produces a numeric sum based on the initials and scales to a hue hsl value
   def color
     def char_to_num(letter)
-      "a".upto("z").to_a.index(letter)
+      "A".upto("Z").to_a.index(letter)
     end
     hue = 0
-    initials.each_char { i hue += char_to_num(i) }
+    initials.each_char { |i| hue += char_to_num(i) }
     ((hue / (initials.length * 25.0)) * 360).floor
   end
 
