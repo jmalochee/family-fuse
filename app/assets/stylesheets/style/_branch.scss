@@ -1,0 +1,31 @@
+.branch {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.branch-members {
+	display: flex;
+	flex-direction: row;
+}
+
+.children {
+	display: flex;
+	flex-direction: column;
+	margin-left: 2.5em;
+	border-left: .5em solid steelblue;
+	padding-left: 1em;
+	margin-bottom: 1em;
+}
+
+.branch a {
+	font-style: inherit;
+    color: inherit;
+    background-color: transparent;
+    font-size: inherit;
+    text-decoration: none;
+    font-variant: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-family: inherit;
+}

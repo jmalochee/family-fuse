@@ -1,0 +1,15 @@
+<div class="branch" >
+	<div class="branch-members" >
+		<%= render partial: "members/card", object: member, as: 'member' %>
+		<% if !!member.current_spouse %>
+			<%= render partial: "members/card", object: member.current_spouse, as: "member", locals: {spouse: "spouse" } %>
+		<% end %>
+	</div>
+	<% if !!member.children.first %>
+		<div class="children" >
+			<% member.children.each do |mem| %>
+				<%= render partial: "branch", object: mem, as: "member" %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

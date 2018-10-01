@@ -11,17 +11,17 @@
 		<%= @member.birth_date.strftime("%A, %B #{@member.birth_date.day.ordinalize}, %Y") %><br/>
 	</p>
 	<p>
-		Parents <br/>
 		<% if !!@member.mother && !!@member.father %>
+			Parents <br/>
 			<%= "#{@member.father.first_name} and #{@member.mother.first_name}" %>
 		<% end %>
 	</p>
 	</div>
 	<div class="overview">
 		<% if !!@member.mother && !!@member.father %>
-			<%= render partial: "generation", object: @member.parents, as: 'members' %>
+			<%= render partial: "branch", object: @member.father, as: 'member' %>
+		<% else %>
+			<%= render partial: "branch", object:  @member, as: 'member' %>
 		<% end %>
-		<%= render partial: "generation", object: (@member.siblings + [@member]), as: 'members' %>
-		
 	</div>
 </div>
