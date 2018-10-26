@@ -1,4 +1,4 @@
-<div class="member-card<%= defined?(spouse) ? " spouse" : "" %>" id="<%= member.id %>" >
+<div class="member-card<%= defined?(spouse) ? " spouse" : "" %>" >
 	<%= link_to member do %>
 		<%= render partial: "members/avatar", object: member, as: 'member' %>
 		<%= member.goes_by %><br/>

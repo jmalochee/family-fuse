@@ -1,4 +1,4 @@
-<div class="branch" >
+<div class="branch" id="<%= member.id %>" >
 	<div class="branch-members" >
 		<%= render partial: "members/card", object: member, as: 'member' %>
 		<% if !!member.current_spouse %>
@@ -6,7 +6,13 @@
 		<% end %>
 	</div>
 	<% if !!member.children.first %>
-		<div class="children" >
+		<i class="expand hide fas fa-chevron-circle-up" ></i>
+<!-- 		<script>
+			$(this).find(".expand").click(function(event) {
+				this.toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
+			});
+		</script>
+ -->		<div class="children" >
 			<% member.children.each do |mem| %>
 				<%= render partial: "branch", object: mem, as: "member" %>
 			<% end %>

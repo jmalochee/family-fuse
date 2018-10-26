@@ -3,12 +3,12 @@
 		<%= render partial: "members/avatar", object: @member, as: 'member' %>
 	<h1> <%= @member.goes_by+" "+@member.last_name %> </h1>
 	<p>
-		Given Name <br/>
+		Full  Name <br/>
 		<%= @member.full_name %>
 	</p>
 	<p>
 		Born On <br/>
-		<%= @member.birth_date.strftime("%A, %B #{@member.birth_date.day.ordinalize}, %Y") %><br/>
+		<%= @member.birth_date.strftime("%A, %B #{@member.birth_date.day}, %Y") %><br/>
 	</p>
 	<p>
 		<% if !!@member.mother && !!@member.father %>
